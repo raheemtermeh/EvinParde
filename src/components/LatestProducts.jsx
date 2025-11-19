@@ -35,10 +35,12 @@ const products = [
 ];
 
 function ProductCard({ product, index }) {
-  const isMiddle = index === 1 || index === 2; // آیتم های وسطی برای کمی استایل ویژه
+  const isMiddle = index === 1 || index === 2;
 
   return (
-    <div className="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 p-3">
+    <div className="flex-shrink-0 w-1/2 lg:w-1/4 p-2 sm:p-3">
+      {" "}
+      {/* w-1/2 برای دو ستونه شدن در موبایل و تبلت */}
       <div
         className={`bg-white rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:scale-[1.03] border ${
           isMiddle ? "border-[#246e72]" : "border-gray-100"
@@ -61,16 +63,16 @@ function ProductCard({ product, index }) {
         </div>
 
         {/* محتوا */}
-        <div className="p-4 text-right">
+        <div className="p-3 sm:p-4 text-right">
           <h3
-            className={`text-base font-semibold mb-2 ${
+            className={`text-sm sm:text-base font-semibold mb-1 sm:mb-2 ${
               isMiddle ? "text-[#246e72]" : "text-[#3a3a3a]"
             }`}
           >
             {product.name}
           </h3>
 
-          <p className="text-sm text-gray-600">
+          <p className="text-xs sm:text-sm text-gray-600">
             شروع قیمت از{" "}
             <strong className="font-extrabold text-[#246e72]">
               {product.price}
@@ -79,7 +81,7 @@ function ProductCard({ product, index }) {
           </p>
 
           {/* دکمه افزودن به سبد خرید */}
-          <button className="mt-4 w-full flex flex-row-reverse items-center justify-center bg-[#246e72]/10 text-[#246e72] border border-[#246e72] hover:bg-[#246e72] hover:text-white transition-colors py-2 px-4 rounded-md text-sm font-medium shadow-md">
+          <button className="mt-3 sm:mt-4 w-full flex flex-row-reverse items-center justify-center bg-[#246e72]/10 text-[#246e72] border border-[#246e72] hover:bg-[#246e72] hover:text-white transition-colors py-2 px-4 rounded-md text-sm font-medium shadow-md">
             <span className="ml-2">افزودن به سبد خرید</span>
             <ShoppingCart size={16} />
           </button>
@@ -94,17 +96,19 @@ export default function LatestProducts() {
     <section className="container mx-auto px-4 sm:px-6 lg:px-8 mt-16" dir="rtl">
       <div className="flex flex-row-reverse justify-between items-center mb-6">
         {/* دکمه نمایش همه */}
-        <button className="flex flex-row-reverse items-center bg-transparent border border-gray-300 text-[#3a3a3a] hover:bg-gray-100 transition-colors py-2 px-4 rounded-md text-sm font-medium shadow-sm">
+        <button className="flex flex-row-reverse items-center bg-transparent border border-gray-300 text-[#3a3a3a] hover:bg-gray-100 transition-colors py-2 px-3 sm:px-4 rounded-md text-xs sm:text-sm font-medium shadow-sm">
           <span>نمایش همه</span>
           <ArrowLeft size={16} className="ml-2" />
         </button>
 
         {/* عنوان */}
-        <h2 className="text-2xl font-bold text-[#3a3a3a]">جدیدترین محصولات</h2>
+        <h2 className="text-lg sm:text-2xl font-bold text-[#3a3a3a]">
+          جدیدترین محصولات
+        </h2>
       </div>
 
       {/* لیست محصولات */}
-      <div className="flex flex-wrap -m-3">
+      <div className="flex flex-wrap -m-2 sm:-m-3">
         {products.map((product, index) => (
           <ProductCard key={product.id} product={product} index={index} />
         ))}

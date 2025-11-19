@@ -9,7 +9,7 @@ import Link from 'next/link';
 
 export default function ProductsPage() {
   return (
-    <div className="min-h-screen bg-white font-['Vazirmatn']" dir="rtl">
+    <div className="min-h-screen bg-white" dir="rtl">
       <Header />
       
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 mt-10 pb-16">
@@ -23,12 +23,12 @@ export default function ProductsPage() {
 
         <div className="flex flex-col lg:flex-row-reverse gap-8">
           
-          {/* ستون فیلترها (Sidebar) */}
-          <ProductSidebar />
+          
           
           {/* ستون اصلی محصولات */}
           <ProductList />
-          
+          {/* ستون فیلترها (Sidebar) */}
+          <ProductSidebar />
         </div>
       </main>
 

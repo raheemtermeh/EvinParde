@@ -41,7 +41,9 @@ const specialProducts = [
 
 function SpecialProductCard({ product }) {
   return (
-    <div className="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 p-2">
+    <div className="flex-shrink-0 w-1/2 lg:w-1/4 p-2">
+      {" "}
+      {/* w-1/2 برای دو ستونه شدن در موبایل */}
       <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-gray-100">
         {/* تصویر محصول */}
         <div className="relative w-full pt-[100%]">
@@ -74,11 +76,11 @@ function SpecialProductCard({ product }) {
         </div>
 
         {/* محتوا */}
-        <div className="p-4 text-right">
-          <h3 className="text-lg font-semibold text-[#3a3a3a] mb-2">
+        <div className="p-3 sm:p-4 text-right">
+          <h3 className="text-sm sm:text-lg font-semibold text-[#3a3a3a] mb-1 sm:mb-2">
             {product.name}
           </h3>
-          <p className="text-sm text-gray-600 mb-3">
+          <p className="text-xs sm:text-sm text-gray-600 mb-3">
             <strong className="font-extrabold text-red-600 line-through ml-2">
               ۲,۹۸۰,۰۰۰
             </strong>
@@ -103,12 +105,13 @@ export default function SpecialSales() {
   return (
     <section className="container mx-auto px-4 sm:px-6 lg:px-8 mt-16" dir="rtl">
       <div className="flex flex-row-reverse justify-between items-center mb-6">
-        <button className="flex flex-row-reverse items-center bg-[#f0e6d6] border border-gray-300 text-[#3a3a3a] hover:bg-[#e6d9c3] transition-colors py-2 px-4 rounded-md text-sm font-medium shadow-sm">
+        <button className="flex flex-row-reverse items-center bg-[#f0e6d6] border border-gray-300 text-[#3a3a3a] hover:bg-[#e6d9c3] transition-colors py-2 px-3 sm:px-4 rounded-md text-xs sm:text-sm font-medium shadow-sm">
           <span>نمایش همه</span>
           <ArrowLeft size={16} className="mr-2" />
         </button>
-                <h2 className="text-2xl font-bold text-[#3a3a3a]">فروش ویژه</h2>
-
+        <h2 className="text-lg sm:text-2xl font-bold text-[#3a3a3a]">
+          فروش ویژه
+        </h2>
       </div>
 
       {/* لیست محصولات */}

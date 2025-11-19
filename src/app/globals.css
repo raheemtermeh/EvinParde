@@ -1,7 +1,17 @@
 @import "tailwindcss";
+
+/* تعریف فونت IranianSans */
 @font-face {
-  font-family: "ShabnamFD";
-  src: url("../assets/font/Shabnam-FD.woff") format("woff2"),;
+  font-family: "IranianSans"; /* نامی که در CSS استفاده می‌کنیم */
+  /* آدرس‌دهی مستقیم به فایل ttf در پوشه public/fonts */
+  src: url("/fonts/IranianSans.ttf") format("truetype"); 
   font-weight: normal;
   font-style: normal;
+  font-display: swap; /* توصیه شده */
+}
+
+/* ⬅️ کلاس سراسری را حفظ کنید */
+.app-font-iranian-sans {
+  /* 🚨 از !important استفاده می‌کنیم تا بر هر فونت Tailwind یا Google غلبه کند */
+  font-family: "IranianSans", sans-serif !important; 
 }

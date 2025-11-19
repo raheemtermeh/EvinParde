@@ -11,7 +11,7 @@ import Footer from "../components/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white font-['ShabnamFD']" dir="rtl">
+    <div className="min-h-screen bg-white text-right app-font-iranian-sans " dir="rtl">
       <Header />
 
       <main>
