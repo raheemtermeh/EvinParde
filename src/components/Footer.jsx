@@ -34,8 +34,6 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 sm:gap-10 text-right">
           {/* ستون ۱: آدرس و لوگو */}
           <div className="space-y-4 flex flex-col items-end">
-
-
             <div className="text-xs sm:text-sm text-gray-700 space-y-3">
               <div className="flex flex-row-reverse items-start">
                 <MapPin
@@ -43,7 +41,7 @@ export default function Footer() {
                   className="ml-2 text-[#246e72] mt-1 flex-shrink-0"
                 />
                 <p className="font-bold">
-                  آدرس:{" "}
+                  آدرس:
                   <span className="font-normal">
                     خیابان انقلاب، بهار جنوبی، برج بهار، طبقه اول، واحد ۲۰۵
                   </span>
@@ -100,7 +98,6 @@ export default function Footer() {
 
           {/* ستون ۲: عضویت در خبرنامه */}
           <div className="md:col-span-2 lg:col-span-2 flex flex-col items-end text-right space-y-3 sm:space-y-4 order-last md:order-none">
-            
             <p className="text-xs sm:text-sm text-gray-600 max-w-lg">
               با عضویت در خبرنامه از تخفیف‌ها، سوابق سفارشات، نقد و بررسی و
               بسیاری خدمات دیگر بهره‌مند شوید.

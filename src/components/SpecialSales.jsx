@@ -42,7 +42,6 @@ const specialProducts = [
 function SpecialProductCard({ product }) {
   return (
     <div className="flex-shrink-0 w-1/2 lg:w-1/4 p-2">
-      {" "}
       {/* w-1/2 برای دو ستونه شدن در موبایل */}
       <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-gray-100">
         {/* تصویر محصول */}
@@ -86,7 +85,7 @@ function SpecialProductCard({ product }) {
             </strong>
             <strong className="font-extrabold text-[#246e72]">
               {product.price}
-            </strong>{" "}
+            </strong>
             تومان
           </p>
 

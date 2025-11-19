@@ -39,7 +39,6 @@ function ProductCard({ product, index }) {
 
   return (
     <div className="flex-shrink-0 w-1/2 lg:w-1/4 p-2 sm:p-3">
-      {" "}
       {/* w-1/2 برای دو ستونه شدن در موبایل و تبلت */}
       <div
         className={`bg-white rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:scale-[1.03] border ${
@@ -73,10 +72,10 @@ function ProductCard({ product, index }) {
           </h3>
 
           <p className="text-xs sm:text-sm text-gray-600">
-            شروع قیمت از{" "}
+            شروع قیمت از
             <strong className="font-extrabold text-[#246e72]">
               {product.price}
-            </strong>{" "}
+            </strong>
             تومان
           </p>
 

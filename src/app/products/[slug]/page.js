@@ -381,19 +381,19 @@ export default function ProductDetailPage({ params }) {
               </h2>
               <div className="space-y-2 text-xs sm:text-sm pt-2">
                 <p className="flex justify-between border-b border-dotted border-gray-300 pb-1">
-                  <span className="text-gray-600">جنس قاب:</span>{" "}
+                  <span className="text-gray-600">جنس قاب:</span>
                   <span className="font-medium text-[#3a3a3a]">
                     {productData.material}
                   </span>
                 </p>
                 <p className="flex justify-between border-b border-dotted border-gray-300 pb-1">
-                  <span className="text-gray-600">پارچه:</span>{" "}
+                  <span className="text-gray-600">پارچه:</span>
                   <span className="font-medium text-[#3a3a3a]">
                     {productData.washable}
                   </span>
                 </p>
                 <p className="flex justify-between">
-                  <span className="text-gray-600">گارانتی:</span>{" "}
+                  <span className="text-gray-600">گارانتی:</span>
                   <span className="font-medium text-[#3a3a3a]">
                     {productData.warranty}
                   </span>

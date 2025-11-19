@@ -8,7 +8,6 @@ export default function HeroBanner() {
       className="relative h-[450px] sm:h-[600px] bg-[#f3f3e6] overflow-hidden"
       dir="rtl"
     >
-      {" "}
       {/* کاهش ارتفاع در موبایل */}
       {/* تصویر پس‌زمینه */}
       <div className="absolute inset-0">
@@ -32,7 +31,7 @@ export default function HeroBanner() {
           <div className="text-base sm:text-lg text-gray-700 space-y-2 sm:space-y-3 mb-6 sm:mb-8">
             <p>خرید اقساطی آسان بدون ضامن</p>
             <p>
-              فقط با چک شخصی پیش‌پرداخت از <strong>۳۰٪</strong> و تسویه تا{" "}
+              فقط با چک شخصی پیش‌پرداخت از <strong>۳۰٪</strong> و تسویه تا
               <strong>۶ ماه</strong>
             </p>
           </div>
