@@ -18,7 +18,7 @@ const navLinks = [
   { title: "تماس باما", href: "/contact" },
 ];
 
-export default function Header() {
+export default function Header({data}) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   // کلاس‌های مشترک برای دکمه ورود/ثبت‌نام
@@ -59,15 +59,13 @@ export default function Header() {
             </div>
           </Link>
         </div>
-
         {/* لینک‌های ناوبری - مرکز (فقط دسکتاپ) */}
         <nav className="hidden lg:flex items-center justify-center flex-grow">
           <ul className="flex space-x-6 space-x-reverse text-white text-base font-medium">
-            {navLinks.map((link) => (
+            {data?.menu.length >  0 &&  data.menu.map((link) => (
               <li key={link.title}>
                 <Link
-                  href={link.href}
-                  // استایل جذاب‌تر برای لینک‌ها
+                  href={link.url}
                   className="hover:text-[#FBBF24] transition-colors p-2 rounded-md relative after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[3px] after:bg-[#FBBF24] after:transition-all after:duration-300 hover:after:w-full"
                 >
                   {link.title}

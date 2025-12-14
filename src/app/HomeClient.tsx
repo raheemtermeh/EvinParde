@@ -10,14 +10,19 @@ import InstallmentCalculator from "../components/InstallmentCalculator";
 import SpecialSales from "../components/SpecialSales";
 import ServicesBar from "../components/ServicesBar";
 import Footer from "../components/Footer";
+import { headers } from "next/headers";
 
 export default function HomeClient({ data }: { data: any }) {
   return (
     <div className="min-h-screen bg-white text-right app-font-iranian-sans" dir="rtl">
-      <Header />
+      <p onClick={() =>{
+        console.log(data)
+      }}> annnnnnnnn </p>
+      
+      <Header data={data?.data.header} />
       <main>
-        <HeroBanner  />
-        <CategoryBar  />
+        <HeroBanner data={data?.data.slider}  />
+        <CategoryBar  data={data?.data?.box.find(item => item.idd == "home-category") ?? null} />
         <FeaturesSection  />
         <LatestProducts  />
         <InstallmentCalculator  />

@@ -3,15 +3,13 @@ import DOMPurify from "isomorphic-dompurify";
 import rectangle from "../assets/Rectangle61.png";
 
 export default function HeroBanner({ data }) {
-  const rawHtml =
-    data?.hero_html ??
-    data?.hero?.html ??
-    data?.heroBannerHtml ??
+  const rawHtml = data[0].summery
     "";
 
   const cleanHtml = DOMPurify.sanitize(rawHtml);
 
   return (
+    <>
     <section
       className="relative h-[450px] sm:h-[600px] bg-[#f3f3e6] overflow-hidden"
       dir="rtl"
@@ -31,6 +29,7 @@ export default function HeroBanner({ data }) {
 
       <div className="hidden w-full lg:w-1/2 text-right text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-4 sm:mb-6 text-[#3a3a3a] text-[#246e72] text-base sm:text-lg text-gray-700 space-y-2 sm:space-y-3 mb-6 sm:mb-8 flex flex-row-reverse items-center justify-center bg-[#f0a500] hover:bg-[#d99500] transition-colors text-white py-2 sm:py-3 px-6 sm:px-8 rounded-lg text-lg sm:text-xl shadow-xl mr-3 underline" />
     </section>
+  </>
   );
 }
 
