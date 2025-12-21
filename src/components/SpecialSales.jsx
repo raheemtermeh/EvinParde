@@ -100,7 +100,7 @@ function SpecialProductCard({ product }) {
   );
 }
 
-export default function SpecialSales() {
+export default function SpecialSales({data}) {
   return (
     <section className="container mx-auto px-4 sm:px-6 lg:px-8 mt-16" dir="rtl">
       <div className="flex flex-row-reverse justify-between items-center mb-6">
@@ -115,8 +115,8 @@ export default function SpecialSales() {
 
       {/* لیست محصولات */}
       <div className="flex flex-wrap -m-2">
-        {specialProducts.map((product) => (
-          <SpecialProductCard key={product.id} product={product} />
+        {data?.items.length > 0 &&  data?.items.map((product) => (
+          <SpecialProductCard key={product._id} product={product} />
         ))}
       </div>
     </section>

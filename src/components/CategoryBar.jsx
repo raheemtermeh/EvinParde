@@ -34,10 +34,6 @@ export default function CategoryBar({data}) {
   return (
     
     <div className="mt-8 relative z-20 container mx-auto px-4 sm:px-6 lg:px-8">
-            <p onClick={() =>{
-        console.log(data)
-      }}> annnnnnnnn </p>
-      
       <div className="flex flex-row-reverse overflow-x-auto space-x-3 sm:space-x-4 space-x-reverse pb-6 scrollbar-hide">
         {data?.items.length > 0 &&  data?.items.map((category) => (
           <div

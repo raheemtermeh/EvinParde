@@ -15,18 +15,14 @@ import { headers } from "next/headers";
 export default function HomeClient({ data }: { data: any }) {
   return (
     <div className="min-h-screen bg-white text-right app-font-iranian-sans" dir="rtl">
-      <p onClick={() =>{
-        console.log(data)
-      }}> annnnnnnnn </p>
-      
       <Header data={data?.data.header} />
       <main>
         <HeroBanner data={data?.data.slider}  />
         <CategoryBar  data={data?.data?.box.find(item => item.idd == "home-category") ?? null} />
         <FeaturesSection  />
-        <LatestProducts  />
+        <LatestProducts  data={data?.data?.box.find(item => item.idd == "home-product-new") ?? null} />
         <InstallmentCalculator  />
-        <SpecialSales  />
+        <SpecialSales    data={data?.data?.box.find(item => item.idd == "home-product-suggested") ?? null} />
         <ServicesBar  />
       </main>
       <Footer />

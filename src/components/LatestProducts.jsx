@@ -90,7 +90,7 @@ function ProductCard({ product, index }) {
   );
 }
 
-export default function LatestProducts() {
+export default function LatestProducts({data}) {
   return (
     <section className="container mx-auto px-4 sm:px-6 lg:px-8 mt-16" dir="rtl">
       <div className="flex flex-row-reverse justify-between items-center mb-6">
@@ -108,8 +108,8 @@ export default function LatestProducts() {
 
       {/* لیست محصولات */}
       <div className="flex flex-wrap -m-2 sm:-m-3">
-        {products.map((product, index) => (
-          <ProductCard key={product.id} product={product} index={index} />
+        {data?.items.length > 0 &&  data?.items.map((product, index) => (
+          <ProductCard key={product._id} product={product} index={index} />
         ))}
       </div>
     </section>
