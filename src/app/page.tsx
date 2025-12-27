@@ -1,12 +1,11 @@
-export const revalidate = 300; 
+export const revalidate = 300;
 
 import HomeClient from "./HomeClient";
 
 async function getHomeData() {
-  const res = await fetch("https://curtain.linooxel.com/api/ui/page/home", {
+  const res = await fetch(`http://localhost:3000/api/home`, {
     ...(process.env.NODE_ENV === "development" ? { cache: "no-store" } : { next: { revalidate: 300 } }),
   });
-
 
   if (!res.ok) throw new Error(`API failed: ${res.status}`);
   return res.json();

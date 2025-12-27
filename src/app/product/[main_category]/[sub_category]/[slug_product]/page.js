@@ -1,7 +1,6 @@
-// src/app/products/[slug]/page.js
 "use client";
-import Header from "../../../components/Header";
-import Footer from "../../../components/Footer";
+import Header from "../../../../../components/Header";
+import Footer from "../../../../../components/Footer";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -22,11 +21,11 @@ import {
 import { useState } from "react";
 
 // فرض می‌کنیم تمام فایل‌های زیر در assets موجود باشند.
-import an1 from "../../../assets/Group 16.png";
-import an2 from "../../../assets/Group 8.png";
-import an3 from "../../../assets/Group 28.png";
-import an4 from "../../../assets/Group 15.png";
-import an5 from "../../../assets/Group 16.png";
+import an1 from "assets/Group 16.png";
+import an2 from "assets/Group 8.png";
+import an3 from "assets/Group 28.png";
+import an4 from "assets/Group 15.png";
+import an5 from "assets/Group 16.png";
 
 // داده‌های استاتیک برای شبیه‌سازی (بدون تغییر)
 const productData = {
