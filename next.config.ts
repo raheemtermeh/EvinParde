@@ -11,6 +11,11 @@ const nextConfig: NextConfig = {
         pathname: "/**",
       },
       {
+        protocol: "http",
+        hostname: "curtain.linooxel.com:5042",
+        pathname: "/**",
+      },
+      {
         protocol: "https",
         hostname: "picsum.photos",
         pathname: "/**",
