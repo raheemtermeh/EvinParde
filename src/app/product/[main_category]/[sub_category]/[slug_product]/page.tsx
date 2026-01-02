@@ -112,7 +112,7 @@ export default async function ProductPage({
     <>
     
 
-    <ProductDetailPage test="test"/>
+    <ProductDetailPage   productData={productData}/>
       {/* {process.env.NODE_ENV === 'development' && (
         <details className="mt-8 bg-gray-900 text-white p-4 rounded">
           <summary className="cursor-pointer font-bold mb-2">

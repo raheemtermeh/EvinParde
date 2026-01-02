@@ -26,7 +26,7 @@ import an3 from "@/assets/Group 28.png";
 import an4 from "@/assets/Group 15.png";
 import an5 from "@/assets/Group 16.png";
 
-const productData = {
+const productData۲ = {
   name: "پرده شید مدل اسنو",
   category: "پرده شید",
   main_category: {
@@ -41,7 +41,7 @@ const productData = {
   fittings: "جنس قاب آلمینیوم",
   fabric_material: "پارچه قابل شستشو",
   warranty: "دارای اصالت",
-  pricePerMeter: "۱۲۰,۰۰۰",
+  price_per_meter: "۱۲۰,۰۰۰",
   price: "۲,۲۸۰,۰۰۰",
   description:
     "توضیحات تکمیلی: پرده زبرا طرح پله‌ای با رنگ‌های دلخواه و مورد پسند در دکوراسیون داخلی مدرن، محبوب و پرطرفدار است. این پرده با طراحی دو اهرم خود امکان عبور نور را کنترل می‌کند و به شما اجازه می‌دهد میزان روشنایی فضای داخلی را متناسب با نیاز و موقعیت تنظیم کنید. ترکیب رنگ طلایی و سفید، جلوه‌ای شیک و آرامش‌بخش به فضا می‌بخشد.",
@@ -186,16 +186,20 @@ function ImageModal({ images, initialIndex, onClose }) {
 // **پایان کامپوننت Modal**
 // ----------------------------------------------------------------
 
-export default function ProductDetailPage({ data }) {
+export default function ProductDetailPage({ productData }) {
   // const { slug } = params;
+  console.log(productData)
 
   const [meterCount, setMeterCount] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false); // وضعیت مودال
   const [initialImageIndex, setInitialImageIndex] = useState(0); // ایندکس شروع مودال
 
-  const totalPrice = (
-    parseFloat(productData.pricePerMeter.replace(/,/g, "")) * meterCount
-  ).toLocaleString("fa-IR");
+
+  const totalPrice = productData.final_price
+
+  // const totalPrice = (
+  //   parseFloat(productData.price_per_meter.replace(/,/g, "")) * meterCount
+  // ).toLocaleString("fa-IR");
 
   const openModal = (index) => {
     setInitialImageIndex(index);
@@ -205,7 +209,10 @@ export default function ProductDetailPage({ data }) {
   return (
     <div className="min-h-screen bg-[#f9f9f9]" dir="rtl">
       <Header />
-
+      <p onClick={()=>{
+        console.log(data_test)
+        console.log("tee")
+      }}> annn</p>
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 mt-6 sm:mt-10 pb-10 sm:pb-16 text-right">
         {/* Breadcrumb (بدون تغییر) */}
         <div className="text-xs sm:text-sm text-gray-600 mb-4 sm:mb-6">
@@ -244,7 +251,7 @@ export default function ProductDetailPage({ data }) {
               onClick={() => openModal(4)} // عکس زبرا (اندیس ۴)
             >
               <Image
-                src={productData.images[4]['image']}
+                src={productData.gallery[4]['image']}
                 alt="پرده زبرا بزرگ"
                 fill={true}
                 sizes="(max-width: 1024px) 100vw, 60vw"
@@ -277,7 +284,7 @@ export default function ProductDetailPage({ data }) {
                   onClick={() => openModal(index)} // باز کردن مودال با کلیک روی هر عکس
                 >
                   <Image
-                    src={productData.images[index]['image']}
+                    src={productData.gallery[index]['image']}
                     alt={`گالری ${index + 1}`}
                     fill={true}
                     sizes="(max-width: 1024px) 50vw, 20vw"
@@ -426,7 +433,7 @@ export default function ProductDetailPage({ data }) {
                   قیمت درج شده برای هر متر مربع
                 </p>
                 <p className="text-xl sm:text-2xl font-extrabold text-[#246e72] mb-2">
-                  {productData.pricePerMeter} تومان
+                  {productData.price_per_meter} تومان
                 </p>
                 <div className="flex items-center justify-between mt-3 sm:mt-4 bg-gray-50 p-3 rounded-lg border border-gray-200">
                   <div className="flex items-center space-x-3 space-x-reverse">
@@ -473,7 +480,7 @@ export default function ProductDetailPage({ data }) {
       {/* **کامپوننت Modal در پایین صفحه (فقط در صورت نیاز نمایش داده می‌شود)** */}
       {isModalOpen && (
         <ImageModal
-          images={productData.images}
+          images={productData.gallery}
           initialIndex={initialImageIndex}
           onClose={() => setIsModalOpen(false)}
         />
