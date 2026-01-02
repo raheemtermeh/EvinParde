@@ -13,8 +13,8 @@ import {
 import { BadgeCheck, Wallet, Truck } from "lucide-react";
 
 
-import mainCurtain from "../../../assets/image.png";
-import sideCurtainPlaceholder from "../../../assets/Group 11.png";
+import mainCurtain from "@/assets/image.png";
+import sideCurtainPlaceholder from "@/assets/Group 11.png";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";

@@ -29,29 +29,42 @@ import an5 from "@/assets/Group 16.png";
 const productData = {
   name: "پرده شید مدل اسنو",
   category: "پرده شید",
+  main_category: {
+    "name": "پرده",
+    "slug": "pardeh"
+  },
+  sub_category: {
+    "name": "پرده زبرا چاپی",
+    "slug": "پرده-زبرا-چاپی"
+  },
   code: "۱۳۳۶۶۷",
-  material: "جنس قاب آلمینیوم",
-  washable: "پارچه قابل شستشو",
+  fittings: "جنس قاب آلمینیوم",
+  fabric_material: "پارچه قابل شستشو",
   warranty: "دارای اصالت",
   pricePerMeter: "۱۲۰,۰۰۰",
   price: "۲,۲۸۰,۰۰۰",
   description:
     "توضیحات تکمیلی: پرده زبرا طرح پله‌ای با رنگ‌های دلخواه و مورد پسند در دکوراسیون داخلی مدرن، محبوب و پرطرفدار است. این پرده با طراحی دو اهرم خود امکان عبور نور را کنترل می‌کند و به شما اجازه می‌دهد میزان روشنایی فضای داخلی را متناسب با نیاز و موقعیت تنظیم کنید. ترکیب رنگ طلایی و سفید، جلوه‌ای شیک و آرامش‌بخش به فضا می‌بخشد.",
-  rating: 4.5,
-  totalReviews: 1238,
-  images: [an1, an2, an3, an4, an5],
-  comments: [
+  average_rating: 4.5,
+  reviews_count: 1238,
+  images: [
+    {"image":an1, "name":"test"},
+    {"image":an2, "name":"test"},
+    {"image":an3, "name":"test"},
+    {"image":an4, "name":"test"},
+    {"image":an5, "name":"test"}],
+    reviews: [
     {
       name: "علی رضایی",
-      date: "۸ دی ۱۴۰۴",
+      create_at: "۸ دی ۱۴۰۴",
       rating: 4,
-      text: "پرده زبرا طرح پله‌ای با رنگ‌های دلخواه و مورد پسند در دکوراسیون داخلی مدرن، محبوب و پرطرفدار است. این پرده با طراحی دو اهرم خود امکان عبور نور را کنترل می‌کند و به شما اجازه می‌دهد میزان روشنایی فضای داخلی را متناسب با نیاز و موقعیت تنظیم کنید. ترکیب رنگ طلایی و سفید، جلوه‌ای شیک و آرامش‌بخش به فضا می‌بخشد.",
+      comment: "پرده زبرا طرح پله‌ای با رنگ‌های دلخواه و مورد پسند در دکوراسیون داخلی مدرن، محبوب و پرطرفدار است. این پرده با طراحی دو اهرم خود امکان عبور نور را کنترل می‌کند و به شما اجازه می‌دهد میزان روشنایی فضای داخلی را متناسب با نیاز و موقعیت تنظیم کنید. ترکیب رنگ طلایی و سفید، جلوه‌ای شیک و آرامش‌بخش به فضا می‌بخشد.",
     },
     {
       name: "محمد تونا",
-      date: "۸ دی ۱۴۰۴",
+      create_at: "۸ دی ۱۴۰۴",
       rating: 5,
-      text: "پرده زبرا طرح پله‌ای با رنگ‌های دلخواه و مورد پسند در دکوراسیون داخلی مدرن، محبوب و پرطرفدار است. این پرده با طراحی دو اهرم خود امکان عبور نور را کنترل می‌کند و به شما اجازه می‌دهد میزان روشنایی فضای داخلی را متناسب با نیاز و موقعیت تنظیم کنید. ترکیب رنگ طلایی و سفید، جلوه‌ای شیک و آرامش‌بخش به فضا می‌بخشد.",
+      comment: "پرده زبرا طرح پله‌ای با رنگ‌های دلخواه و مورد پسند در دکوراسیون داخلی مدرن، محبوب و پرطرفدار است. این پرده با طراحی دو اهرم خود امکان عبور نور را کنترل می‌کند و به شما اجازه می‌دهد میزان روشنایی فضای داخلی را متناسب با نیاز و موقعیت تنظیم کنید. ترکیب رنگ طلایی و سفید، جلوه‌ای شیک و آرامش‌بخش به فضا می‌بخشد.",
     },
   ],
 };
@@ -120,7 +133,7 @@ function ImageModal({ images, initialIndex, onClose }) {
         {/* عکس بزرگ مرکزی */}
         <div className="relative w-full h-full rounded-lg overflow-hidden">
           <Image
-            src={images[currentIndex]}
+            src={images[currentIndex]['image']}
             alt={`تصویر ${currentIndex + 1} از ${productData.name}`}
             fill={true}
             sizes="100vw"
@@ -152,7 +165,7 @@ function ImageModal({ images, initialIndex, onClose }) {
             }`}
           >
             <Image
-              src={img}
+              src={img['image']}
               alt={`Thumbnail ${index + 1}`}
               fill={true}
               sizes="10vw"
@@ -199,13 +212,23 @@ export default function ProductDetailPage({ data }) {
           <Link href="/" className="hover:text-[#246e72]">
             خانه
           </Link>
-          <span className="mx-1 sm:mx-2">/</span>
+          {/* <span className="mx-1 sm:mx-2">/</span>
           <Link href="/products" className="hover:text-[#246e72]">
             لیست محصولات
+          </Link> */}
+          <span className="mx-1 sm:mx-2">/</span>
+           <Link href={`/${productData.main_category['slug']}`} className="hover:text-[#246e72]">
+            {productData.main_category['name']}
           </Link>
+
+          <span className="mx-1 sm:mx-2">/</span>
+           <Link href={`/${productData.main_category['slug']}/${productData.sub_category['slug']}`} className="hover:text-[#246e72]">
+            {productData.sub_category['name']}
+          </Link>
+
           <span className="mx-1 sm:mx-2">/</span>
           <span className="font-bold text-[#3a3a3a] text-sm">
-            {productData.category}
+            {productData.name}
           </span>
         </div>
 
@@ -221,7 +244,7 @@ export default function ProductDetailPage({ data }) {
               onClick={() => openModal(4)} // عکس زبرا (اندیس ۴)
             >
               <Image
-                src={productData.images[4]}
+                src={productData.images[4]['image']}
                 alt="پرده زبرا بزرگ"
                 fill={true}
                 sizes="(max-width: 1024px) 100vw, 60vw"
@@ -254,7 +277,7 @@ export default function ProductDetailPage({ data }) {
                   onClick={() => openModal(index)} // باز کردن مودال با کلیک روی هر عکس
                 >
                   <Image
-                    src={productData.images[index]}
+                    src={productData.images[index]['image']}
                     alt={`گالری ${index + 1}`}
                     fill={true}
                     sizes="(max-width: 1024px) 50vw, 20vw"
@@ -313,7 +336,7 @@ export default function ProductDetailPage({ data }) {
               <div className="flex flex-row-reverse justify-between items-center text-sm">
                 <div className="flex flex-col items-end">
                   <span className="text-xl sm:text-2xl font-extrabold text-[#246e72]">
-                    {productData.rating}
+                    {productData.average_rating}
                   </span>
                   <span className="text-xs sm:text-sm text-gray-600">
                     امتیاز کاربران
@@ -322,7 +345,7 @@ export default function ProductDetailPage({ data }) {
                 <div className="flex flex-col items-end">
                   <RatingStars rating={productData.rating} />
                   <span className="text-xs sm:text-sm text-gray-500 mt-1">
-                    از {productData.totalReviews} دیدگاه
+                    از {productData.reviews_count} دیدگاه
                   </span>
                 </div>
               </div>
@@ -340,7 +363,7 @@ export default function ProductDetailPage({ data }) {
 
             {/* لیست دیدگاه‌ها */}
             <div className="space-y-4">
-              {productData.comments.map((comment, index) => (
+              {productData.reviews.length > 0  && productData.reviews.map((comment, index) => (
                 <div
                   key={index}
                   className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm space-y-2"
@@ -350,12 +373,12 @@ export default function ProductDetailPage({ data }) {
                       {comment.name}
                     </span>
                     <span className="text-xs text-gray-500">
-                      {comment.date}
+                      {comment.create_at}
                     </span>
                   </div>
                   <RatingStars rating={comment.rating} />
                   <p className="text-xs sm:text-sm text-gray-700 leading-relaxed pt-2">
-                    {comment.text}
+                    {comment.comment}
                   </p>
                   <div className="flex flex-row-reverse justify-start items-center space-x-4 space-x-reverse text-xs text-gray-500 pt-3 border-t border-gray-100">
                     <span className="flex items-center hover:text-red-500 cursor-pointer transition-colors">
@@ -368,6 +391,8 @@ export default function ProductDetailPage({ data }) {
                 </div>
               ))}
             </div>
+          
+          
           </div>
 
           {/* ستون ۲ (قیمت و خرید) */}
@@ -380,13 +405,13 @@ export default function ProductDetailPage({ data }) {
                 <p className="flex justify-between border-b border-dotted border-gray-300 pb-1">
                   <span className="text-gray-600">جنس قاب:</span>
                   <span className="font-medium text-[#3a3a3a]">
-                    {productData.material}
+                    {productData.fittings}
                   </span>
                 </p>
                 <p className="flex justify-between border-b border-dotted border-gray-300 pb-1">
                   <span className="text-gray-600">پارچه:</span>
                   <span className="font-medium text-[#3a3a3a]">
-                    {productData.washable}
+                    {productData.fabric_material}
                   </span>
                 </p>
                 <p className="flex justify-between">
