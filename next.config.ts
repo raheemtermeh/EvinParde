@@ -12,7 +12,8 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "http",
-        hostname: "curtain.linooxel.com:5042",
+        hostname: "curtain.linooxel.com",
+        port: "5042", 
         pathname: "/**",
       },
       {
