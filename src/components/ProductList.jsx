@@ -4,8 +4,8 @@ import { Star, ShoppingCart, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import AddToCartButton from "./AddToCartButton";
 
-// ... (داده‌های products و sortOptions بدون تغییر)
 const products = [
   // داده‌های تکراری برای شبیه‌سازی محصولات
   {
@@ -91,7 +91,6 @@ const sortOptions = [
   { label: "پرفروش‌ها", value: "best-sellers" },
 ];
 
-
 function ProductCard({ product }) {
   return (
     // 💡 ریسپانسیو: 1/2 عرض در موبایل، 1/3 در تبلت/لپ‌تاپ کوچک، 1/4 در دسکتاپ بزرگتر
@@ -133,19 +132,21 @@ function ProductCard({ product }) {
             </div>
 
             {/* دکمه افزودن به سبد خرید - استایل رنگ برند */}
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation(); /* افزودن به سبد */
+            <AddToCartButton
+              product={{
+                id: product.id.toString(),
+                name: product.name,
+                price: parseInt(product.price.replace(/,/g, "")),
+                image: product.image,
               }}
               className="mt-4 w-full flex flex-row-reverse items-center justify-center 
-											                    bg-[#92d0c2] text-[#246e72] font-bold 
-											                    hover:bg-[#246e72] hover:text-white transition-colors 
-											                    py-2 px-4 rounded-lg text-sm shadow-md"
+                            bg-[#92d0c2] text-[#246e72] font-bold 
+                            hover:bg-[#246e72] hover:text-white transition-colors 
+                            py-2 px-4 rounded-lg text-sm shadow-md"
             >
               <span>افزودن به سبد خرید</span>
               <ShoppingCart size={16} className="mr-2" />
-            </button>
+            </AddToCartButton>
           </div>
         </div>
       </Link>
@@ -168,9 +169,6 @@ export default function ProductList() {
 
           {/* گزینه‌های مرتب‌سازی (ترین‌ها) */}
           <div className="flex flex-row-reverse items-center text-sm w-full sm:w-auto">
-
-           
-
             <div className="flex flex-wrap flex-row-reverse space-x-1 space-x-reverse overflow-x-auto">
               {sortOptions.map((option) => (
                 <button
@@ -178,17 +176,18 @@ export default function ProductList() {
                   onClick={() => setSelectedSort(option.value)}
                   className={`
                                         py-2 px-4 rounded-full transition-all duration-200 text-xs sm:text-sm font-medium whitespace-nowrap
-                                        ${selectedSort === option.value
-                      ? "bg-[#246e72] text-white shadow-lg shadow-[#246e72]/30 " // انتخاب شده
-                      : "text-gray-600 bg-gray-100 hover:bg-gray-200" // عادی
-                    }
+                                        ${
+                                          selectedSort === option.value
+                                            ? "bg-[#246e72] text-white shadow-lg shadow-[#246e72]/30 " // انتخاب شده
+                                            : "text-gray-600 bg-gray-100 hover:bg-gray-200" // عادی
+                                        }
                                     `}
                 >
                   {option.label}
                 </button>
               ))}
             </div>
-             {/* **تغییرات اصلی: انتقال متن مرتب‌سازی به بیرون حلقه** */}
+            {/* **تغییرات اصلی: انتقال متن مرتب‌سازی به بیرون حلقه** */}
             <span className="ml-3 text-gray-700 font-bold hidden sm:block whitespace-nowrap">
               مرتب‌سازی بر اساس:
             </span>
