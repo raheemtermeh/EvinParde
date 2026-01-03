@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
@@ -19,6 +19,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { useState } from "react";
+import AddToCartButton from "@/components/AddToCartButton";
 
 import an1 from "@/assets/Group 16.png";
 import an2 from "@/assets/Group 8.png";
@@ -30,12 +31,12 @@ const productData۲ = {
   name: "پرده شید مدل اسنو",
   category: "پرده شید",
   main_category: {
-    "name": "پرده",
-    "slug": "pardeh"
+    name: "پرده",
+    slug: "pardeh",
   },
   sub_category: {
-    "name": "پرده زبرا چاپی",
-    "slug": "پرده-زبرا-چاپی"
+    name: "پرده زبرا چاپی",
+    slug: "پرده-زبرا-چاپی",
   },
   code: "۱۳۳۶۶۷",
   fittings: "جنس قاب آلمینیوم",
@@ -48,23 +49,26 @@ const productData۲ = {
   average_rating: 4.5,
   reviews_count: 1238,
   images: [
-    {"image":an1, "name":"test"},
-    {"image":an2, "name":"test"},
-    {"image":an3, "name":"test"},
-    {"image":an4, "name":"test"},
-    {"image":an5, "name":"test"}],
-    reviews: [
+    { image: an1, name: "test" },
+    { image: an2, name: "test" },
+    { image: an3, name: "test" },
+    { image: an4, name: "test" },
+    { image: an5, name: "test" },
+  ],
+  reviews: [
     {
       name: "علی رضایی",
       create_at: "۸ دی ۱۴۰۴",
       rating: 4,
-      comment: "پرده زبرا طرح پله‌ای با رنگ‌های دلخواه و مورد پسند در دکوراسیون داخلی مدرن، محبوب و پرطرفدار است. این پرده با طراحی دو اهرم خود امکان عبور نور را کنترل می‌کند و به شما اجازه می‌دهد میزان روشنایی فضای داخلی را متناسب با نیاز و موقعیت تنظیم کنید. ترکیب رنگ طلایی و سفید، جلوه‌ای شیک و آرامش‌بخش به فضا می‌بخشد.",
+      comment:
+        "پرده زبرا طرح پله‌ای با رنگ‌های دلخواه و مورد پسند در دکوراسیون داخلی مدرن، محبوب و پرطرفدار است. این پرده با طراحی دو اهرم خود امکان عبور نور را کنترل می‌کند و به شما اجازه می‌دهد میزان روشنایی فضای داخلی را متناسب با نیاز و موقعیت تنظیم کنید. ترکیب رنگ طلایی و سفید، جلوه‌ای شیک و آرامش‌بخش به فضا می‌بخشد.",
     },
     {
       name: "محمد تونا",
       create_at: "۸ دی ۱۴۰۴",
       rating: 5,
-      comment: "پرده زبرا طرح پله‌ای با رنگ‌های دلخواه و مورد پسند در دکوراسیون داخلی مدرن، محبوب و پرطرفدار است. این پرده با طراحی دو اهرم خود امکان عبور نور را کنترل می‌کند و به شما اجازه می‌دهد میزان روشنایی فضای داخلی را متناسب با نیاز و موقعیت تنظیم کنید. ترکیب رنگ طلایی و سفید، جلوه‌ای شیک و آرامش‌بخش به فضا می‌بخشد.",
+      comment:
+        "پرده زبرا طرح پله‌ای با رنگ‌های دلخواه و مورد پسند در دکوراسیون داخلی مدرن، محبوب و پرطرفدار است. این پرده با طراحی دو اهرم خود امکان عبور نور را کنترل می‌کند و به شما اجازه می‌دهد میزان روشنایی فضای داخلی را متناسب با نیاز و موقعیت تنظیم کنید. ترکیب رنگ طلایی و سفید، جلوه‌ای شیک و آرامش‌بخش به فضا می‌بخشد.",
     },
   ],
 };
@@ -133,7 +137,7 @@ function ImageModal({ images, initialIndex, onClose }) {
         {/* عکس بزرگ مرکزی */}
         <div className="relative w-full h-full rounded-lg overflow-hidden">
           <Image
-            src={images[currentIndex]['image']}
+            src={images[currentIndex]["image"]}
             alt={`تصویر ${currentIndex + 1} از ${productData.name}`}
             fill={true}
             sizes="100vw"
@@ -165,7 +169,7 @@ function ImageModal({ images, initialIndex, onClose }) {
             }`}
           >
             <Image
-              src={img['image']}
+              src={img["image"]}
               alt={`Thumbnail ${index + 1}`}
               fill={true}
               sizes="10vw"
@@ -188,14 +192,13 @@ function ImageModal({ images, initialIndex, onClose }) {
 
 export default function ProductDetailPage({ productData }) {
   // const { slug } = params;
-  console.log(productData)
+  console.log(productData);
 
   const [meterCount, setMeterCount] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false); // وضعیت مودال
   const [initialImageIndex, setInitialImageIndex] = useState(0); // ایندکس شروع مودال
 
-
-  const totalPrice = productData.final_price
+  const totalPrice = productData.final_price;
 
   // const totalPrice = (
   //   parseFloat(productData.price_per_meter.replace(/,/g, "")) * meterCount
@@ -220,13 +223,19 @@ export default function ProductDetailPage({ productData }) {
             لیست محصولات
           </Link> */}
           <span className="mx-1 sm:mx-2">/</span>
-           <Link href={`/product/${productData.main_category['slug']}`} className="hover:text-[#246e72]">
-            {productData.main_category['name']}
+          <Link
+            href={`/${productData.main_category["slug"]}`}
+            className="hover:text-[#246e72]"
+          >
+            {productData.main_category["name"]}
           </Link>
 
           <span className="mx-1 sm:mx-2">/</span>
-           <Link href={`/product/${productData.main_category['slug']}/${productData.sub_category['slug']}`} className="hover:text-[#246e72]">
-            {productData.sub_category['name']}
+          <Link
+            href={`/${productData.main_category["slug"]}/${productData.sub_category["slug"]}`}
+            className="hover:text-[#246e72]"
+          >
+            {productData.sub_category["name"]}
           </Link>
 
           <span className="mx-1 sm:mx-2">/</span>
@@ -247,7 +256,7 @@ export default function ProductDetailPage({ productData }) {
               onClick={() => openModal(4)} // عکس زبرا (اندیس ۴)
             >
               <Image
-                src={productData.gallery[4]['image']}
+                src={productData.gallery[4]["image"]}
                 alt="پرده زبرا بزرگ"
                 fill={true}
                 sizes="(max-width: 1024px) 100vw, 60vw"
@@ -280,7 +289,7 @@ export default function ProductDetailPage({ productData }) {
                   onClick={() => openModal(index)} // باز کردن مودال با کلیک روی هر عکس
                 >
                   <Image
-                    src={productData.gallery[index]['image']}
+                    src={productData.gallery[index]["image"]}
                     alt={`گالری ${index + 1}`}
                     fill={true}
                     sizes="(max-width: 1024px) 50vw, 20vw"
@@ -366,36 +375,35 @@ export default function ProductDetailPage({ productData }) {
 
             {/* لیست دیدگاه‌ها */}
             <div className="space-y-4">
-              {productData.reviews.length > 0  && productData.reviews.map((comment, index) => (
-                <div
-                  key={index}
-                  className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm space-y-2"
-                >
-                  <div className="flex flex-row-reverse justify-between items-center">
-                    <span className="font-extrabold text-[#3a3a3a] text-xs sm:text-sm">
-                      {comment.name}
-                    </span>
-                    <span className="text-xs text-gray-500">
-                      {comment.create_at}
-                    </span>
+              {productData.reviews.length > 0 &&
+                productData.reviews.map((comment, index) => (
+                  <div
+                    key={index}
+                    className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm space-y-2"
+                  >
+                    <div className="flex flex-row-reverse justify-between items-center">
+                      <span className="font-extrabold text-[#3a3a3a] text-xs sm:text-sm">
+                        {comment.name}
+                      </span>
+                      <span className="text-xs text-gray-500">
+                        {comment.create_at}
+                      </span>
+                    </div>
+                    <RatingStars rating={comment.rating} />
+                    <p className="text-xs sm:text-sm text-gray-700 leading-relaxed pt-2">
+                      {comment.comment}
+                    </p>
+                    <div className="flex flex-row-reverse justify-start items-center space-x-4 space-x-reverse text-xs text-gray-500 pt-3 border-t border-gray-100">
+                      <span className="flex items-center hover:text-red-500 cursor-pointer transition-colors">
+                        <Heart size={14} className="ml-1" /> پسندیدن (2)
+                      </span>
+                      <span className="flex items-center hover:text-[#246e72] cursor-pointer transition-colors">
+                        <CheckCircle size={14} className="ml-1" /> پاسخ
+                      </span>
+                    </div>
                   </div>
-                  <RatingStars rating={comment.rating} />
-                  <p className="text-xs sm:text-sm text-gray-700 leading-relaxed pt-2">
-                    {comment.comment}
-                  </p>
-                  <div className="flex flex-row-reverse justify-start items-center space-x-4 space-x-reverse text-xs text-gray-500 pt-3 border-t border-gray-100">
-                    <span className="flex items-center hover:text-red-500 cursor-pointer transition-colors">
-                      <Heart size={14} className="ml-1" /> پسندیدن (2)
-                    </span>
-                    <span className="flex items-center hover:text-[#246e72] cursor-pointer transition-colors">
-                      <CheckCircle size={14} className="ml-1" /> پاسخ
-                    </span>
-                  </div>
-                </div>
-              ))}
+                ))}
             </div>
-          
-          
           </div>
 
           {/* ستون ۲ (قیمت و خرید) */}
@@ -458,10 +466,18 @@ export default function ProductDetailPage({ productData }) {
                   قیمت کل: {totalPrice} تومان
                 </p>
               </div>
-              <button className="w-full flex items-center justify-center bg-[#f0a500] text-white font-bold py-3 rounded-md hover:bg-[#d99500] transition-colors shadow-lg shadow-[#f0a500]/30 mt-4 text-sm sm:text-base">
+              <AddToCartButton
+                product={{
+                  id: productData.id,
+                  name: productData.name,
+                  price: parseInt(productData.price.replace(/,/g, "")),
+                  image: productData.images?.[0]?.image || null,
+                }}
+                className="w-full flex items-center justify-center bg-[#f0a500] text-white font-bold py-3 rounded-md hover:bg-[#d99500] transition-colors shadow-lg shadow-[#f0a500]/30 mt-4 text-sm sm:text-base"
+              >
                 <ShoppingCart size={20} className="mr-2" />
                 افزودن به سبد خرید
-              </button>
+              </AddToCartButton>
               <button className="w-full text-red-600 text-xs sm:text-sm font-medium flex items-center justify-center hover:text-red-700 transition-colors pt-2">
                 <MessageCircle size={16} className="ml-1" />
                 گزارش مشکل

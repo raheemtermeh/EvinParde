@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CartProvider } from "@/context/CartContext";
 // ❌ خطوط زیر که فونت‌های گوگل را لود می‌کنند، حذف یا کامنت شوند.
 // import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -28,7 +29,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa" dir="rtl">
-      <body className="app-font-iranian-sans antialiased">{children}</body>
+      <body className="app-font-iranian-sans antialiased">
+        <CartProvider>{children}</CartProvider>
+      </body>
     </html>
   );
 }
