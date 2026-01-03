@@ -6,78 +6,78 @@ import Link from "next/link";
 import { useState } from "react";
 
 // ... (داده‌های products و sortOptions بدون تغییر)
-const products = [
+const products2 = [
   // داده‌های تکراری برای شبیه‌سازی محصولات
   {
     id: 1,
     name: "پرده شید مدل اسنو",
-    price: "2,280,000",
+    final_price: "2,280,000",
     image: "/path/to/product1.jpg",
-    rating: 4.5,
+    average_rating: 4.5,
     slug: "product-1",
   },
   {
     id: 2,
     name: "پرده شید مدل آستو",
-    price: "2,280,000",
+    final_price: "2,280,000",
     image: "/path/to/product2.jpg",
-    rating: 4.2,
+    average_rating: 4.2,
     slug: "product-2",
   },
   {
     id: 3,
     name: "پرده شید مدل آستو",
-    price: "2,280,000",
+    final_price: "2,280,000",
     image: "/path/to/product3.jpg",
-    rating: 4.8,
+    average_rating: 4.8,
     slug: "product-3",
   },
   {
     id: 4,
     name: "پرده شید مدل اسنو",
-    price: "2,280,000",
+    final_price: "2,280,000",
     image: "/path/to/product4.jpg",
-    rating: 3.9,
+    average_rating: 3.9,
     slug: "product-4",
   },
   {
     id: 5,
     name: "پرده شید مدل اسنو",
-    price: "2,280,000",
+    final_price: "2,280,000",
     image: "/path/to/product5.jpg",
-    rating: 4.1,
+    average_rating: 4.1,
     slug: "product-5",
   },
   {
     id: 6,
     name: "پرده شید مدل آستو",
-    price: "2,280,000",
+    final_price: "2,280,000",
     image: "/path/to/product6.jpg",
-    rating: 4.7,
+    average_rating: 4.7,
     slug: "product-6",
   },
   {
     id: 7,
     name: "پرده شید مدل آستو",
-    price: "2,280,000",
+    final_price: "2,280,000",
     image: "/path/to/product7.jpg",
-    rating: 4.4,
+    average_rating: 4.4,
     slug: "product-7",
   },
   {
     id: 8,
     name: "پرده شید مدل اسنو",
-    price: "2,280,000",
+    final_price: "2,280,000",
     image: "/path/to/product8.jpg",
-    rating: 4.6,
+    average_rating: 4.6,
     slug: "product-8",
   },
   {
     id: 9,
     name: "پرده شید مدل زبرا",
-    price: "2,280,000",
+    final_price: "2,280,000",
     image: "/path/to/product9.jpg",
-    rating: 4.3,
+    average_rating: 4.3,
     slug: "product-9",
   },
 ];
@@ -94,11 +94,9 @@ const sortOptions = [
 
 function ProductCard({ product }) {
   return (
-    // 💡 ریسپانسیو: 1/2 عرض در موبایل، 1/3 در تبلت/لپ‌تاپ کوچک، 1/4 در دسکتاپ بزرگتر
     <div className="flex-shrink-0 w-full sm:w-1/2 md:w-1/3 xl:w-1/4 p-3">
-      <Link href={`/products/${product.slug}`} passHref>
+      <Link href={`/product/${product.main_category.slug}/${product.sub_category.slug}/${product.slug}`} passHref>
         <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-gray-100 hover:border-[#246e72] transform hover:scale-[1.01] cursor-pointer h-full flex flex-col">
-          {/* بخش تصویر */}
           <div className="relative w-full pt-[100%]">
             <Image
               src={product.image}
@@ -110,7 +108,7 @@ function ProductCard({ product }) {
 
             {/* رتبه بندی - موقعیت و استایل شیک‌تر */}
             <div className="absolute top-3 right-3 bg-white text-[#f0a500] text-sm font-extrabold py-1 px-3 rounded-lg flex items-center shadow-md border border-gray-100">
-              <span className="ml-1">{product.rating}</span>
+              <span className="ml-1">{product.average_rating}</span>
               <Star size={14} fill="currentColor" />
             </div>
           </div>
@@ -126,7 +124,7 @@ function ProductCard({ product }) {
               <p className="text-sm text-gray-600">
                 شروع قیمت از
                 <strong className="font-extrabold text-[#246e72] text-lg mr-1">
-                  {product.price}
+                  {product.final_price}
                 </strong>
                 تومان
               </p>
@@ -153,7 +151,7 @@ function ProductCard({ product }) {
   );
 }
 
-export default function ProductList() {
+export default function ProductList({products}) {
   const [selectedSort, setSelectedSort] = useState("relevant");
 
   return (

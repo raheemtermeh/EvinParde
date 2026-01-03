@@ -220,12 +220,12 @@ export default function ProductDetailPage({ productData }) {
             لیست محصولات
           </Link> */}
           <span className="mx-1 sm:mx-2">/</span>
-           <Link href={`/product/${productData.main_category['slug']}`} className="hover:text-[#246e72]">
+           <Link href={`/${productData.main_category['slug']}`} className="hover:text-[#246e72]">
             {productData.main_category['name']}
           </Link>
 
           <span className="mx-1 sm:mx-2">/</span>
-           <Link href={`/product/${productData.main_category['slug']}/${productData.sub_category['slug']}`} className="hover:text-[#246e72]">
+           <Link href={`/${productData.main_category['slug']}/${productData.sub_category['slug']}`} className="hover:text-[#246e72]">
             {productData.sub_category['name']}
           </Link>
 
