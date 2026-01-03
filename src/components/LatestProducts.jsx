@@ -1,6 +1,7 @@
 // src/components/LatestProducts.jsx
 "use client";
 import { ArrowLeft, Star, ShoppingCart } from "lucide-react";
+import Link from "next/link";
 import Image from "next/image";
 
 const products = [
@@ -45,6 +46,9 @@ function ProductCard({ product, index }) {
           isMiddle ? "border-[#246e72]" : "border-gray-100"
         }`}
       >
+        <Link key={product.slug} href={`/product/${product.main_category['slug']}/${product.sub_category['slug']}/${product.slug}`} className="hover:text-[#246e72]">
+            
+
         {/* تصویر محصول */}
         <div className="relative w-full pt-[100%]">
           <Image
@@ -60,6 +64,7 @@ function ProductCard({ product, index }) {
             <Star size={12} fill="currentColor" />
           </div>
         </div>
+        </Link>
 
         {/* محتوا */}
         <div className="p-3 sm:p-4 text-right">
@@ -81,9 +86,13 @@ function ProductCard({ product, index }) {
 
           {/* دکمه افزودن به سبد خرید */}
           <button className="mt-3 sm:mt-4 w-full flex flex-row-reverse items-center justify-center bg-[#246e72]/10 text-[#246e72] border border-[#246e72] hover:bg-[#246e72] hover:text-white transition-colors py-2 px-4 rounded-md text-sm font-medium shadow-md">
-            <span className="ml-2">افزودن به سبد خرید</span>
-            <ShoppingCart size={16} />
+           <Link key={product.slug} href={`/product/${product.main_category['slug']}/${product.sub_category['slug']}/${product.slug}`} className="hover:text-[#246e72]">
+            
+              <span className="ml-2">مشاهده</span>
+
+            </Link>
           </button>
+
         </div>
       </div>
     </div>

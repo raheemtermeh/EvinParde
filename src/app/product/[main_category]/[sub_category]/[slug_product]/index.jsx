@@ -223,20 +223,15 @@ export default function ProductDetailPage({ productData }) {
             لیست محصولات
           </Link> */}
           <span className="mx-1 sm:mx-2">/</span>
-          <Link
-            href={`/${productData.main_category["slug"]}`}
-            className="hover:text-[#246e72]"
-          >
-            {productData.main_category["name"]}
+           <Link href={`/product/${productData.main_category['slug']}`} className="hover:text-[#246e72]">
+            {productData.main_category['name']}
           </Link>
 
           <span className="mx-1 sm:mx-2">/</span>
-          <Link
-            href={`/${productData.main_category["slug"]}/${productData.sub_category["slug"]}`}
-            className="hover:text-[#246e72]"
-          >
-            {productData.sub_category["name"]}
+           <Link href={`/product/${productData.main_category['slug']}/${productData.sub_category['slug']}`} className="hover:text-[#246e72]">
+            {productData.sub_category['name']}
           </Link>
+
 
           <span className="mx-1 sm:mx-2">/</span>
           <span className="font-bold text-[#3a3a3a] text-sm">
@@ -470,7 +465,8 @@ export default function ProductDetailPage({ productData }) {
                 product={{
                   id: productData.id,
                   name: productData.name,
-                  price: parseInt(productData.price.replace(/,/g, "")),
+                  // price: parseInt(productData.price.replace(/,/g, "")),
+                  price: parseInt(productData.price),
                   image: productData.images?.[0]?.image || null,
                 }}
                 className="w-full flex items-center justify-center bg-[#f0a500] text-white font-bold py-3 rounded-md hover:bg-[#d99500] transition-colors shadow-lg shadow-[#f0a500]/30 mt-4 text-sm sm:text-base"

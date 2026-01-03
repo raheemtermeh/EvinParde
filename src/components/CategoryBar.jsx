@@ -1,5 +1,6 @@
 // src/components/CategoryBar.jsx
 "use client";
+import Link from "next/link";
 import Image from "next/image";
 
 const categories = [
@@ -36,8 +37,10 @@ export default function CategoryBar({data}) {
     <div className="mt-8 relative z-20 container mx-auto px-4 sm:px-6 lg:px-8">
       <div className="flex flex-row-reverse overflow-x-auto space-x-3 sm:space-x-4 space-x-reverse pb-6 scrollbar-hide">
         {data?.items.length > 0 &&  data?.items.map((category) => (
+           <Link key={category.slug} href={`/product/pardeh/${category.slug}/`} className="hover:text-[#246e72]">
+          
           <div
-            key={category.slug}
+            
             className="flex-shrink-0 w-40 sm:w-48 md:w-56 lg:w-64 h-64 sm:h-72 md:h-80 rounded-xl overflow-hidden shadow-lg cursor-pointer group transition-all duration-300 hover:shadow-2xl hover:scale-105 border-2 border-transparent hover:border-[#f0a500]" /* ریسپانسیو کردن اندازه کارت */
           >
             <div className="relative w-full h-full">
@@ -56,6 +59,7 @@ export default function CategoryBar({data}) {
               </div>
             </div>
           </div>
+          </Link>
         ))}
       </div>
     </div>
